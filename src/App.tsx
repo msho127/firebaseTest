@@ -1,8 +1,8 @@
 // App.tsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RegisterPage from "./pages/Registerpage";
+import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/Homepage";
+import HomePage from "./pages/HomePage";
 import NavBar from "./components/Navbar";
 
 function App() {
