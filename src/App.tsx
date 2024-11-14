@@ -1,16 +1,21 @@
-import './App.css';
-import Home from "./home"
+// App.tsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RegisterPage from "./pages/Registerpage";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/Homepage";
+import NavBar from "./components/Navbar";
 
 function App() {
-
   return (
-    <>
-      <div className='App'>
-        <h1>Firebaseでログイン機能を実装しよう</h1>
-        <Home/>
-      </div>
-    </>
-  )
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
