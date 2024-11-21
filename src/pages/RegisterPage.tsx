@@ -1,7 +1,7 @@
 // RegisterPage.tsx
 import { useState } from "react";
-import { auth } from "../libs/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, googleProvider } from "../libs/firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
@@ -17,6 +17,16 @@ export default function RegisterPage() {
       navigate("/home");
     } catch (error) {
       setError("登録に失敗しました。もう一度お試しください。");
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      alert("Googleでのログインに成功しました！");
+      navigate("/home");
+    } catch (error) {
+      setError("Googleでのログインに失敗しました。もう一度お試しください。");
     }
   };
 
@@ -36,6 +46,7 @@ export default function RegisterPage() {
         placeholder="Password"
       />
       <button onClick={handleRegister}>登録</button>
+      <button onClick={handleGoogleLogin}>Googleでログイン</button>
       {error && <p>{error}</p>}
     </div>
   );
